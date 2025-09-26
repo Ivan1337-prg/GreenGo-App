@@ -1,9 +1,9 @@
 # GreenGo-App
-**Group Members**
--Taras Glushko
--Cody Onukwuli
--Solomon Legesse
--Kaelin Love
+### Group Members
+- Taras Glushko
+- Cody Onukwuli
+- Solomon Legesse
+- Kaelin Love
 
 UNT Rideshare App for students to get on and off campus
 
