@@ -3,12 +3,12 @@
 - cd GreenGo-App
 # install root dev deps (concurrently)
 - npm install -D concurrently
-**Client (frontend)**
+### Client (frontend)
 
 - cd client
 - npm install
 - cd ..
-**Server (backend)**
+### Server (backend)
 
 - cd server
 - npm install
