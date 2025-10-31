@@ -1,4 +1,4 @@
-import { FaDownload } from "react-icons/fa";
+import { FaGooglePlay, FaApple } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
 import hero from "../assets/hero-illustration.jpg";
 
@@ -20,12 +20,12 @@ export default function Hero() {
 
           <div className="hero__actions">
             <button className="btn btn-solid">
-              <FaDownload className="btn__icon" />
-              Download
+              <FaGooglePlay className="btn__icon" />
+              Google Play
             </button>
             <button className="btn btn-outline">
-              <FaDownload className="btn__icon" />
-              Download
+              <FaApple className="btn__icon" />
+              App Store
             </button>
           </div>
         </div>

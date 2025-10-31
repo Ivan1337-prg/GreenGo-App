@@ -1,4 +1,4 @@
-import { FaDownload } from "react-icons/fa";
+import { FaGooglePlay, FaApple } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -9,12 +9,12 @@ export default function Footer() {
         </div>
         <div className="footer__actions">
           <button className="btn btn-outline btn-sm">
-            <FaDownload className="btn__icon" />
-            Download
+            <FaGooglePlay className="btn__icon" />
+            Google Play
           </button>
           <button className="btn btn-outline btn-sm">
-            <FaDownload className="btn__icon" />
-            Download
+            <FaApple className="btn__icon" />
+            App Store
           </button>
         </div>
       </div>
