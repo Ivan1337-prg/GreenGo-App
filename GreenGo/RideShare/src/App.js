@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
-import {BrowserRouter as Router,Routes,Route,Link,} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"; // Correct import
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import RidePage from "./components/RidePage";
-function App()
-{
+import HowItWorks from "./components/HowItWorks"; // Ensure HowItWorks is imported
+import RequestRide from "./components/RequestRide"; // Ensure RequestRide is imported
+
+function App() {
   const [userEmail, setUserEmail] = useState(null);
-  useEffect(() =>
-  {
+
+  useEffect(() => {
     const savedEmail = localStorage.getItem("userEmail");
-    if (savedEmail) 
-    {
+    if (savedEmail) {
       setUserEmail(savedEmail);
     }
   }, []);
-  const handleLogout = () =>
-  {
+
+  const handleLogout = () => {
     localStorage.removeItem("userEmail");
     setUserEmail(null);
     window.location.href = "/login";
   };
+
   return (
     <Router>
       <div className="container mt-5">
@@ -46,10 +48,13 @@ function App()
             </>
           )}
         </nav>
+
         <Routes>
           <Route path="/login" element={<Login setUserEmail={setUserEmail} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/ride" element={<RidePage />} />
+          <Route path="/" element={<HowItWorks />} /> {/* Home page */}
+          <Route path="/request-ride" element={<RequestRide />} /> {/* Request Ride page */}
         </Routes>
       </div>
     </Router>
