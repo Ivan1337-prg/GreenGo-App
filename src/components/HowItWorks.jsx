@@ -1,4 +1,5 @@
-import { FaCarSide, FaUpload, FaBell, FaWallet } from "react-icons/fa";
+import { FaCarSide, FaUpload, FaBell, FaWallet, FaHome, FaUser } from "react-icons/fa";
+import heroIllustration from "../assets/hero-illustration.jpg";
 import phone from "../assets/phone.jpg";
 
 const items = [
@@ -52,8 +53,44 @@ export default function HowItWorks() {
 
           <div className="how__center">
             <div className="how__phone-wrapper">
+              <div className="how__phone-shell" role="img" aria-label="phone mockup">
+                <div
+                  className="how__phone-screen"
+                  style={{ backgroundImage: `url(${heroIllustration})` }}
+                />
+              </div>
+
+              {/* phone frame overlay (image) */}
+              <img src={phone} alt="phone frame" className="how__phone-frame" />
+
+              {/* greeting and bottom nav sit above the overlay frame */}
               <div className="how__greeting">Good day, Siffat</div>
-              <img src={phone} alt="App phone" className="how__phone" />
+              <div className="how__bottom-nav" role="navigation" aria-label="phone bottom nav">
+                <button className="nav-btn" aria-label="Home">
+                  <FaHome className="nav-icon" />
+                  <span>Home</span>
+                </button>
+                <button className="nav-btn" aria-label="My Ride">
+                  <FaCarSide className="nav-icon" />
+                  <span>Ride</span>
+                </button>
+                <button className="nav-btn" aria-label="Notifications">
+                  <FaBell className="nav-icon" />
+                  <span>Notifications</span>
+                </button>
+                <button className="nav-btn" aria-label="Profile">
+                  <FaUser className="nav-icon" />
+                  <span>Profile</span>
+                </button>
+              </div>
+            </div>
+            <div className="how__actions">
+              <button className="btn btn-outline how__btn">
+                Find a ride
+              </button>
+              <button className="btn btn-solid how__btn">
+                Publish a ride
+              </button>
             </div>
           </div>
 
