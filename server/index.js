@@ -1,9 +1,21 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+// ✅ make sure dotenv looks in the same folder as this file
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: join(__dirname, ".env") });
+
+console.log("✅ Loaded environment variables:");
+console.log("PORT:", process.env.PORT);
+
 
 const app = express();
 
-// allow your Vite dev ports
+// ✅ allow your Vite dev ports
 app.use(
   cors({
     origin: ["http://localhost:5173", "http://localhost:5174"],
@@ -15,10 +27,10 @@ app.use(
 
 app.use(express.json());
 
-// health check
+// ✅ simple health check
 app.get("/api/ping", (req, res) => res.json({ ok: true, msg: "pong" }));
 
-// temp in-memory rides
+// ✅ temp in-memory rides
 const rides = [];
 
 app.get("/api/rides", (req, res) => res.json(rides));
@@ -36,11 +48,8 @@ app.post("/api/rides", (req, res) => {
   res.status(201).json(ride);
 });
 
-// ❌ remove this (it caused the error):
-// app.options("*", cors());
 
-// ✅ if you want an explicit preflight route, scope it:
-// app.options("/api/*", cors());
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => console.log(`🚀 API running on http://localhost:${PORT}`));
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`API running on :${PORT}`));
+
