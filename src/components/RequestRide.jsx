@@ -1,64 +1,95 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { FaMapMarkerAlt, FaSearch, FaCar } from 'react-icons/fa';
 
 const RequestRide = () => {
-  const [pickupLocation, setPickupLocation] = useState('');
+  const [location, setLocation] = useState('');
   const [destination, setDestination] = useState('');
   const [rideType, setRideType] = useState('standard');
-  const navigate = useNavigate();
 
-  const handleRequestRide = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Ride Request:', { pickupLocation, destination, rideType });
-    alert(`Ride requested from ${pickupLocation} to ${destination}`);
-    navigate(-1);
+    alert(`Requesting ${rideType} ride from ${location} to ${destination}`);
   };
 
+  const rideOptions = [
+    { id: 'standard', name: 'Standard', price: '$15-20', time: '5 min', icon: <FaCar /> },
+    { id: 'comfort', name: 'Comfort', price: '$20-25', time: '7 min', icon: <FaCar /> },
+    { id: 'green', name: 'Green', price: '$12-18', time: '8 min', icon: <FaCar /> },
+  ];
+
   return (
-    <div className="container" style={{ maxWidth: '500px', margin: '2rem auto', padding: '2rem' }}>
-      <h2>Request a Ride</h2>
-      <form onSubmit={handleRequestRide} className="card p-4">
-        <div className="mb-3">
-          <label className="form-label">Pickup Location:</label>
+    <div className="request-ride-container">
+      {/* Header */}
+      <div className="request-ride-header">
+        <h1>Request a Ride</h1>
+        <p>Get where you're going</p>
+      </div>
+
+      {/* Location Inputs */}
+      <div className="location-inputs">
+        <div className="input-group">
+          <div className="input-icon">
+            <FaMapMarkerAlt className="icon pickup-icon" />
+          </div>
           <input
             type="text"
-            className="form-control"
-            value={pickupLocation}
-            onChange={(e) => setPickupLocation(e.target.value)}
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             placeholder="Enter pickup location"
-            required
+            className="location-input"
           />
         </div>
-        
-        <div className="mb-3">
-          <label className="form-label">Destination:</label>
+
+        <div className="input-separator"></div>
+
+        <div className="input-group">
+          <div className="input-icon">
+            <FaMapMarkerAlt className="icon destination-icon" />
+          </div>
           <input
             type="text"
-            className="form-control"
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             placeholder="Enter destination"
-            required
+            className="location-input"
           />
         </div>
+      </div>
 
-        <div className="mb-3">
-          <label className="form-label">Ride Type:</label>
-          <select 
-            className="form-select"
-            value={rideType}
-            onChange={(e) => setRideType(e.target.value)}
-          >
-            <option value="standard">Standard</option>
-            <option value="premium">Premium</option>
-            <option value="carpool">Carpool</option>
-          </select>
+      {/* Ride Type Selection */}
+      <div className="ride-type-section">
+        <h3>Choose a ride</h3>
+        <div className="ride-options">
+          {rideOptions.map((option) => (
+            <div
+              key={option.id}
+              className={`ride-option ${rideType === option.id ? 'selected' : ''}`}
+              onClick={() => setRideType(option.id)}
+            >
+              <div className="ride-icon">{option.icon}</div>
+              <div className="ride-info">
+                <div className="ride-name">{option.name}</div>
+                <div className="ride-details">
+                  <span className="ride-price">{option.price}</span>
+                  <span className="ride-time">{option.time}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
 
-        <button type="submit" className="btn btn-success w-100">
+      {/* Confirm Button */}
+      <div className="confirm-section">
+        <button 
+          type="button" 
+          className="confirm-button"
+          onClick={handleFormSubmit}
+          disabled={!location || !destination}
+        >
           Confirm Ride Request
         </button>
-      </form>
+      </div>
     </div>
   );
 };
