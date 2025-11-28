@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import { FaCarSide, FaUpload, FaBell, FaWallet, FaHome, FaUser } from 'react-icons/fa';
 import heroIllustration from "../assets/hero-illustration.jpg";
 import phone from "../assets/phone.jpg";
@@ -9,25 +9,29 @@ const items = [
     id: "01",
     icon: <FaCarSide />,
     title: "Request a Ride",
-    text: "Put your current location and destination, then search a ride that suits you."
+    text: "Put your current location and destination, then search a ride that suits you.",
+    path: "/request-ride"
   },
   {
     id: "02",
     icon: <FaUpload />,
     title: "Post a Ride",
-    text: "Going somewhere but hate to travel alone? Post your ride details and publish it."
+    text: "Going somewhere but hate to travel alone? Post your ride details and publish it.",
+    path: "/post-ride"
   },
   {
     id: "03",
     icon: <FaBell />,
     title: "Instant Notifications",
-    text: "Get instant updates when someone joins your ride."
+    text: "Get instant updates when someone joins your ride.",
+    path: "/notifications"
   },
   {
     id: "04",
     icon: <FaWallet />,
     title: "Cashless Payment",
-    text: "Pay easily using your GreenGo wallet — no cash needed."
+    text: "Pay easily using your GreenGo wallet — no cash needed.",
+    path: "/payment"
   }
 ];
 
@@ -41,14 +45,13 @@ export default function HowItWorks() {
         </p>
 
         <div className="how__grid">
+          {/* Card 1 - Request a Ride */}
           <div className="how__card">
             <div className="how__badge">{items[0].id}</div>
             <div className="how__icon">{items[0].icon}</div>
             <h3 className="how__title">{items[0].title}</h3>
             <p className="how__text">{items[0].text}</p>
-
-            {/* Button to navigate to the Request Ride page */}
-            <Link to="/request-ride">
+            <Link to={items[0].path}>
               <button className="btn btn-solid how__btn">
                 Request a Ride
               </button>
@@ -63,11 +66,7 @@ export default function HowItWorks() {
                   style={{ backgroundImage: `url(${heroIllustration})` }}
                 />
               </div>
-
-              {/* phone frame overlay (image) */}
               <img src={phone} alt="phone frame" className="how__phone-frame" />
-
-              {/* greeting and bottom nav sit above the overlay frame */}
               <div className="how__greeting">Good day, Siffat</div>
               <div className="how__bottom-nav" role="navigation" aria-label="phone bottom nav">
                 <button className="nav-btn" aria-label="Home">
@@ -89,12 +88,16 @@ export default function HowItWorks() {
               </div>
             </div>
             <div className="how__actions">
-              <button className="btn btn-outline how__btn">
-                Find a ride
-              </button>
-              <button className="btn btn-solid how__btn">
-                Publish a ride
-              </button>
+              <Link to="/request-ride">
+                <button className="btn btn-outline how__btn">
+                  Find a ride
+                </button>
+              </Link>
+              <Link to="/post-ride">
+                <button className="btn btn-solid how__btn">
+                  Publish a ride
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -105,6 +108,11 @@ export default function HowItWorks() {
               <div className="how__icon">{item.icon}</div>
               <h3 className="how__title">{item.title}</h3>
               <p className="how__text">{item.text}</p>
+              <Link to={item.path}>
+                <button className="btn btn-solid how__btn">
+                  {item.title}
+                </button>
+              </Link>
             </div>
           ))}
         </div>

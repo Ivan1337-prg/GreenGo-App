@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "260b7f1c-f63f-46f9-aa2a-bcc20dde235e"
+      }
+    },
+    "android": {
+      "package": "com.taras2.greengo"
+    },
+    "ios": {
+      "bundleIdentifier": "com.taras2.greengo",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
+  }
+}
