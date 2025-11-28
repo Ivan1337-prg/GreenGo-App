@@ -16,15 +16,11 @@ The purpose of this app is to pick up and drop off UNT students around the campu
 
 ## MongoDB setup
 - MONGODB_URI=mongodb://127.0.0.1:27017/greengo
-- PORT=5000
+- PORT=5001
 
 ## install packages
-- npm install -D concurrently
-- npm install react-icons
-- npm i react-router-dom
-
-## Client (frontend)
--npm run dev
+- npm install
+- npm install bootstrap
 
 ## Server (backend)
 - cd server
@@ -37,4 +33,4 @@ The purpose of this app is to pick up and drop off UNT students around the campu
 **that will start:**
 
 - React frontend → http://localhost:5173
-- Express backend → http://localhost:5000/api/ping
+- Express backend → http://localhost:5001/api/ping
