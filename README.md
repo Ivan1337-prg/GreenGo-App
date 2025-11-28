@@ -14,22 +14,23 @@ The purpose of this app is to pick up and drop off UNT students around the campu
 - git clone -b taras-branch https://github.com/Ivan1337-prg/GreenGo-App.git or git clone -b taras-branch https://github.com/Ivan1337-prg/GreenGo-App.git
 - cd GreenGo-App
 
-# install root dev deps (concurrently)
-- npm install -D concurrently
-- npm install react-icons
+## MongoDB setup
+- MONGODB_URI=mongodb://127.0.0.1:27017/greengo
+- PORT=5001
 
-### Client (frontend)
--npm run dev
+## install packages
+- npm install
+- npm install bootstrap
 
-### Server (backend)
+## Server (backend)
 - cd server
 - npm install
 - cd ..
 
-# Run it
+## Run it
 - npm run dev
 
 **that will start:**
 
 - React frontend → http://localhost:5173
-- Express backend → http://localhost:5000/api/ping
+- Express backend → http://localhost:5001/api/ping

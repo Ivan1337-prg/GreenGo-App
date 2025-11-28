@@ -1,4 +1,6 @@
-import { FaCarSide, FaUpload, FaBell, FaWallet } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaCarSide, FaUpload, FaBell, FaWallet, FaHome, FaUser } from "react-icons/fa";
+import heroIllustration from "../assets/hero-illustration.jpg";
 import phone from "../assets/phone.jpg";
 
 const items = [
@@ -6,30 +8,26 @@ const items = [
     id: "01",
     icon: <FaCarSide />,
     title: "Request a Ride",
-    text:
-      "Put your current location and destination, then search a ride that suits you."
+    text: "Put your current location and destination, then search a ride that suits you.",
   },
   {
     id: "02",
     icon: <FaUpload />,
     title: "Post a Ride",
-    text:
-      "Going somewhere but hate to travel alone? Post your ride details and publish it."
+    text: "Going somewhere but hate to travel alone? Post your ride details and publish it.",
   },
   {
     id: "03",
     icon: <FaBell />,
     title: "Instant Notifications",
-    text:
-      "Get instant updates when someone joins your ride."
+    text: "Get instant updates when someone joins your ride.",
   },
   {
     id: "04",
     icon: <FaWallet />,
     title: "Cashless Payment",
-    text:
-      "Pay easily using your GreenGo wallet — no cash needed."
-  }
+    text: "Pay easily using your GreenGo wallet — no cash needed.",
+  },
 ];
 
 export default function HowItWorks() {
@@ -38,8 +36,8 @@ export default function HowItWorks() {
       <div className="container">
         <h2 className="section__title">How GreenGo Works</h2>
         <p className="section__subtitle">
-          Download and install the GreenGo app. Enter your phone number and make
-          your user account. When approved, you may start driving.
+          Download and install the GreenGo app. Enter your phone number and make your user account.
+          When approved, you may start driving.
         </p>
 
         <div className="how__grid">
@@ -48,35 +46,60 @@ export default function HowItWorks() {
             <div className="how__icon">{items[0].icon}</div>
             <h3 className="how__title">{items[0].title}</h3>
             <p className="how__text">{items[0].text}</p>
-          </div>
 
+            <Link to="/request-ride" className="btn btn-solid how__btn">
+              Request a Ride
+            </Link>
+          </div>
           <div className="how__center">
             <div className="how__phone-wrapper">
+              <div className="how__phone-shell" role="img" aria-label="phone mockup">
+                <div
+                  className="how__phone-screen"
+                  style={{ backgroundImage: `url(${heroIllustration})` }}
+                />
+              </div>
+
+              <img src={phone} alt="phone frame" className="how__phone-frame" />
+
               <div className="how__greeting">Good day, Siffat</div>
-              <img src={phone} alt="App phone" className="how__phone" />
+              <div className="how__bottom-nav" role="navigation" aria-label="phone bottom nav">
+                <button className="nav-btn" aria-label="Home">
+                  <FaHome className="nav-icon" />
+                  <span>Home</span>
+                </button>
+                <button className="nav-btn" aria-label="My Ride">
+                  <FaCarSide className="nav-icon" />
+                  <span>Ride</span>
+                </button>
+                <button className="nav-btn" aria-label="Notifications">
+                  <FaBell className="nav-icon" />
+                  <span>Notifications</span>
+                </button>
+                <button className="nav-btn" aria-label="Profile">
+                  <FaUser className="nav-icon" />
+                  <span>Profile</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="how__actions">
+              <Link to="/ride" className="btn btn-outline how__btn">
+                Find a ride
+              </Link>
+              <Link to="/ride" className="btn btn-solid how__btn">
+                Publish a ride
+              </Link>
             </div>
           </div>
-
-          <div className="how__card">
-            <div className="how__badge">{items[1].id}</div>
-            <div className="how__icon">{items[1].icon}</div>
-            <h3 className="how__title">{items[1].title}</h3>
-            <p className="how__text">{items[1].text}</p>
-          </div>
-
-          <div className="how__card">
-            <div className="how__badge">{items[2].id}</div>
-            <div className="how__icon">{items[2].icon}</div>
-            <h3 className="how__title">{items[2].title}</h3>
-            <p className="how__text">{items[2].text}</p>
-          </div>
-
-          <div className="how__card">
-            <div className="how__badge">{items[3].id}</div>
-            <div className="how__icon">{items[3].icon}</div>
-            <h3 className="how__title">{items[3].title}</h3>
-            <p className="how__text">{items[3].text}</p>
-          </div>
+          {items.slice(1).map((item) => (
+            <div className="how__card" key={item.id}>
+              <div className="how__badge">{item.id}</div>
+              <div className="how__icon">{item.icon}</div>
+              <h3 className="how__title">{item.title}</h3>
+              <p className="how__text">{item.text}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
