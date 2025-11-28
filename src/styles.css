@@ -636,3 +636,21 @@ section[id] {
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(0,0,0,.08);
 }
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.auth-page
+{
+  min-height: calc(100vh - 80px); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
