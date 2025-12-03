@@ -22,6 +22,8 @@ The purpose of this app is to pick up and drop off UNT students around the campu
 - npm install -D concurrently
 - npm install react-icons
 - npm i react-router-dom
+- npm install firebase
+- npm install
 
 ## Client (frontend)
 -npm run dev
