@@ -26,7 +26,7 @@ The purpose of this app is to pick up and drop off UNT students around the campu
 - npm install
 
 ## Client (frontend)
--npm run dev
+- npm run dev
 
 ## Server (backend)
 - cd server
